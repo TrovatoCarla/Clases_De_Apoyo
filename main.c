@@ -36,13 +36,12 @@ int main()
             printf("\nNo Aprobado");
         }*/
     int notasPedidas;
-    int i;
     int acumulador=0;
     float elPromedio;
-    for(i=0;i<5;i++)
+    for(int i=0;i<5;i++)
     {
-        printf("\nIngrese la nota entre 0 y 10: ");
-        scanf("%d",notasPedidas);
+        notasPedidas=PedirNumero();//se q la nota esta bien por la validacion
+        scanf("%d",&notasPedidas);
         acumulador=acumulador+notasPedidas;
     }
     elPromedio=SacarPromedio(notasPedidas,i);
@@ -85,5 +84,3 @@ int PedirNotas ()
 {
 
 }
-
-
