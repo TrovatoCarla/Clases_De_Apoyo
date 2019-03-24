@@ -82,5 +82,5 @@ int PedirNumero()
 }
 int PedirNotas ()
 {
-
+    printf("HOls");
 }
