@@ -82,5 +82,6 @@ int PedirNumero()
 }
 int PedirNotas ()
 {
-    printf("HOls");
+    printf("PRUEBA DESDE CASA");
+
 }
