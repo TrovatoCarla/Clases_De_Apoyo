@@ -1,34 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int PedirNumeros();
-float SacarPromedio(int suma,int cantidad);
-
+int pedirNumeros();
+float sacarPromedio(int suma,int cantidad);
 
 int main()
 {
-    PedirNumeros();
-    SacarPromedio(float);
+    int numero;
+    float promedio;
+    int i=0;
+    int acumulador=0;
+    for(i==0;i<5;i++)
+    {
+        numero=pedirNumeros();
+        acumulador=acumulador+numero;
+    }
+    promedio=sacarPromedio(acumulador,i);
+    printf("El promedio es: %.2f",promedio);
     return 0;
 }
 
-int PedirNumeros()
+int pedirNumeros()
 {
     int numeroIngresado;
-    for(int i=0;i<5;i++)
+    do
     {
-        do
-        {
-        printf("\Ingrese un numero del 0 al 10: ");
+        printf("\nIngrese un numero: ");
         scanf("%d",&numeroIngresado);
-        }
-        while(numeroIngresado>10 || numeroIngresado<0);
     }
+    while(numeroIngresado>10 || numeroIngresado<0);
+    return numeroIngresado;
 }
-float SacarPromedio(int suma,int cantidad)
+
+float sacarPromedio(int suma,int cantidad)
 {
     float elPromedio;
     elPromedio=(float)suma/cantidad;
     return elPromedio;
-
 }
