@@ -1,87 +1,81 @@
 #include <stdio.h>
 #include <stdlib.h>
-//INGRESE LA NOTA DE 5 ALUMNOS(ENTRE 0 Y 10)
-//INFORMAR CUANTOS APROBARON
-//EL PROMEDIO DE NOTAS DE TODOS
-//EL PROMEDIO DE NOTAS DE LOS QUE NO APROBARON
-//1er
 
-int PedirNumero(void);//PROTOTIPO
-/** \brief
- *pide un numero entre 1 y 10
- * \param suma int
- *\param cantidad int
- * \return float
- *el promedio retornado
- */
-float SacarPromedio(int suma,int cantidad);//LA COPIO Y LA PEGO EN LA FUNCION
-int sacarAprobacion(int notaMinima, int nota);
+int pedirNumeros();
+float sacarPromedio(int suma,int cantidad);
+int sacarAprobados(int notaMinima,int nota);
 
 int main()
-{//ASI QUEDA EL MAIN
-   /* int numeroIngresado;
+{
+    int nota;
+    int i;
+    int totalNotas=0;
     float promedio;
-    int estaAprobado;
-    numeroIngresado=PedirNumero();
-    promedio=SacarPromedio(94,5);//18.7999 ACA YA ESTOY DECLARANDO CUANTO VALE SUMA Y CUANTO VALE CANTIDAD
-    printf("\nEl numero ingresado es: %d",numeroIngresado);
-    printf("\nEl promedio es: %f",promedio);
-    estaAprobado=sacarAprobacion(6,numeroIngresado);
-        if(estaAprobado==1)
+    float promedioNoAprobados;
+    int sumaNoAprobados=0;
+    int contadorAprobados=0;
+    int contadorNoAprobados=0;
+
+    for(i=0;i<5;i++)
+    {
+        nota=pedirNumeros();
+        totalNotas=totalNotas+nota;
+        if(sacarAprobados(6,nota))
         {
-            printf("\nAprobado");
+            contadorAprobados=contadorAprobados+1;
         }
         else
         {
-            printf("\nNo Aprobado");
-        }*/
-    int notasPedidas;
-    int acumulador=0;
-    float elPromedio;
-    for(int i=0;i<5;i++)
-    {
-        notasPedidas=PedirNumero();//se q la nota esta bien por la validacion
-        scanf("%d",&notasPedidas);
-        acumulador=acumulador+notasPedidas;
+            contadorNoAprobados=contadorNoAprobados+1;
+            sumaNoAprobados=sumaNoAprobados+nota;
+        }
     }
-    elPromedio=SacarPromedio(notasPedidas,i);
-    printf("El promedio es: %.2f",elPromedio);
+    promedio=sacarPromedio(totalNotas,i);
+    promedioNoAprobados=sacarPromedio(sumaNoAprobados,contadorNoAprobados);
+    printf("\nEl promedio de las notas es:%.2f",promedio);
+    printf("\nLa cantidad de alumnos aprobados es:%d",contadorAprobados);
+    printf("\nEl promedio de los NO aprobados es:%.2f",promedioNoAprobados);
+    /*int numero;
+    float promedio;
+    int i=0;
+    int acumulador=0;
+    for(i==0;i<5;i++)
+    {
+        numero=pedirNumeros();
+        acumulador=acumulador+numero;
+    }
+    promedio=sacarPromedio(acumulador,i);
+    printf("El promedio es: %.2f",promedio);*/
     return 0;
 }
 
-int sacarAprobacion(int notaMinima, int numeroIngresado)
+int pedirNumeros()
 {
-    if(numeroIngresado<notaMinima)
-     {   return 0;
+    int numeroIngresado;
+    do
+    {
+        printf("\nIngrese un numero entre el 0 y 10: ");
+        scanf("%d",&numeroIngresado);
     }
-    else
+    while(numeroIngresado>10 || numeroIngresado<0);
+    return numeroIngresado;
+}
+
+float sacarPromedio(int suma,int cantidad)
+{
+    float elPromedio;
+    elPromedio=(float)suma/cantidad;
+    return elPromedio;
+}
+
+int sacarAprobados(int notaMinima,int nota)
+{
+    if(nota>=notaMinima)
     {
         return 1;
     }
-}
-float SacarPromedio(int suma,int cantidad)
-{
-    float promedio;
-    promedio=(float)suma/cantidad;
-    return promedio;
-
-}
-
-int PedirNumero()
-{
-    int elNumero;
-    //VALIDAR
-    do
+    else
     {
-         printf("\nIngrese un numero del 0 al 10: ");
-        scanf("%d",&elNumero);
+        return 0;
     }
-   while(elNumero<0 || elNumero>10);
-
-    return elNumero;
-}
-int PedirNotas ()
-{
-    printf("PRUEBA DESDE CASA");
-
 }
