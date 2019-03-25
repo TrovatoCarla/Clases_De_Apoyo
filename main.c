@@ -4,6 +4,7 @@
 int pedirNumeros();
 float sacarPromedio(int suma,int cantidad);
 int sacarAprobados(int notaMinima,int nota);
+int pruebagit();
 
 int main()
 {
