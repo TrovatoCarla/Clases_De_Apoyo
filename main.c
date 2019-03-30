@@ -7,8 +7,11 @@ int main()
 {
     int sepudo;
     float respuesta;
-
-    sepudo=dividir(10,2,&respuesta);
+    int primerEdad;
+    int segundaEdad;
+    pedirEdad(&primerEdad);
+    pedirEdad(&segundaEdad);
+    sepudo=dividir(primerEdad,segundaEdad,&respuesta);
     if(sepudo==1)
     {
         printf("la respuesta es: %.2f",respuesta);
