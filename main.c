@@ -5,6 +5,39 @@
 
 int main()
 {
+    int sepudo;
+    float respuesta;
+
+    sepudo=dividir(10,2,&respuesta);
+    if(sepudo==1)
+    {
+        printf("la respuesta es: %f",respuesta)_;
+    }
+    else
+    {
+        printf("no se pudo");
+    }
+    /*
+    int miEdad;
+    while(pedirEdad(&miEdad)==0)//si pedir edad es igual a 0 (error) que vuelva a pedir Edad ITERACION,para eso sirve
+    {
+        //nada
+    }
+//int retorno;
+// int retorno=pedirEdad(&miEdad);
+   if(pedirEdad(&miEdad)==1)
+   {
+       printf("\nsu edad es %d",miEdad);
+   }
+   else
+   {
+       printf("\nno se pudo");
+   }
+    */
+   return 0;
+
+
+      /*
     printf("Hello world!\n");
     versianda();
     int sueldo;//creamos una variable que apunta a una posicion de memoria RAM
@@ -15,5 +48,6 @@ int main()
     cambiarreferencia(&sueldo);
     printf("\npor referencia: %d",sueldo);
     return 0;
+    */
 }
 
