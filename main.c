@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcionespunteros.h"
-
+//
 
 int main()
 {
@@ -11,7 +11,7 @@ int main()
     sepudo=dividir(10,2,&respuesta);
     if(sepudo==1)
     {
-        printf("la respuesta es: %f",respuesta)_;
+        printf("la respuesta es: %.2f",respuesta);
     }
     else
     {
