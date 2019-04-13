@@ -24,12 +24,10 @@ int main()
     int i;
     int respuesta;
 
-    respuesta==strlen(ingreso);
-    printf("cantidad de caracteres ingredo:%d \n",respuesta);
+    respuesta=strlen(ingreso);
+    printf("cantidad de caracteres ingreso:%d \n",respuesta);
     respuesta=strlen("lalala");
     printf("Cantidad de caracteres ingreso: %d \n",respuesta);
-
-
 
     for(i=0;i<TAMANIO;i++)
     {
@@ -65,8 +63,7 @@ int main()
     return retorno;
  }
 
-
-    getCodigo(char *mensaje, char *codigo)
+ int getCodigo(char *mensaje, char *codigo)
     // tiene que tener 6 de largo el codigo.
 {
     char ingreso[50];
@@ -78,9 +75,8 @@ int main()
 
     auxPrecio=atof(ingreso);//atof, recibe una palabra y te la devuelve como doble, si no te devuelve 0.
 
-    if( strlen(ingreso)==7)
+    if(strlen(ingreso)==7)
     {
-
         retorno=1;
     }
     return retorno;
