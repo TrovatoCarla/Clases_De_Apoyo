@@ -2,82 +2,113 @@
 #include <stdlib.h>
 #include <string.h>
 #define TAMANIO 3
+typedef struct{
+    float precios ;
+    char codigos[7];
+}Producto;
+
+int getPrecio(char *mensaje,float *elPrecio);
+int getCodigo(char *mensaje,char *codigo);
+
 
 /** \brief
- *  vamos a administrar los productos de un comercio
- * codigo de 6 caracteres
- * precio
- * \param
- * \param
- * \return
+ * vamos aadministrar los productos de un comercio
+ * cod 6 caracteres
+ *  precio
+
+ * \return int
+ *
  *
  */
-int getPrecio(char *mensaje,float *resultado);
-int getCodigo(char *mensaje, char *codigo);
-
 int main()
 {
-    float precios[TAMANIO];
-    char codigos[TAMANIO][7]; //que va primero, tamaño o codigo.
-    //char codigos[7][TAMANIO];
-    char ingreso[7];
-    int i;
-    int respuesta;
 
-    respuesta=strlen(ingreso);
-    printf("cantidad de caracteres ingreso:%d \n",respuesta);
-    respuesta=strlen("lalala");
-    printf("Cantidad de caracteres ingreso: %d \n",respuesta);
+    float precios[TAMANIO] ;
+    char codigos[TAMANIO][7];
+    //char codigos[7][TAMANIO];
+    Producto unProducto;
+    int i;
+    int j;
+    while(getPrecio("ingrese precio  , por fa!!!",&unProducto.precios)==0){
+        printf("error ...");
+       }
+
+
+        while(getCodigo("ingrese Codigo  , por fa!!!",unProducto.codigos)==0){
+        printf("error ...");
+       }
+    printf("codigo:%s precio: %f \n",unProducto.codigos,unProducto.precios);
+
+     for(i=0;i<TAMANIO;i++)
+    {
+       while(getPrecio("ingrese precio  , por fa!!!",&precios[i])==0){
+        printf("error ...");
+       }
+
+
+        while(getCodigo("ingrese Codigo  , por fa!!!",codigos[i])==0){
+        printf("error ...");
+       }
+
+    }
 
     for(i=0;i<TAMANIO;i++)
     {
-        while(getPrecio("Ingrese precio\n", &precios[i]))
+        printf("codigo:%s precio: %f \n",codigos[i],precios[i]);
+    }
+
+    for(i=0;i<TAMANIO;i++)
+    {
+        for(j=0;j<TAMANIO;j++)
         {
-            printf("Error");
+            if(precios[i]<precios[j])
+            {
+                int aux=precios[i];
+                precios[i]=precios[j];
+                precios[j]=aux;
+
+                char auxCo[7];
+                strcpy(auxCo,codigos[i]);
+                strcpy(codigos[i],codigos[j]);
+                strcpy(codigos[j],auxCo);
+
+            }
         }
     }
     for(i=0;i<TAMANIO;i++)
     {
-        printf("precio %.2f\n", precios[i]);
+        printf("codigo:%s precio: %f \n",codigos[i],precios[i]);
     }
-
-    printf("De array de estructuras!\n");
+    printf("De array a estruturas \n");
     return 0;
 }
-
- int getPrecio(char *mensaje,float *resultado)
- {
+int getCodigo(char *mensaje,char *codigo)
+{
     char ingreso[50];
-    float auxPrecio;
     int retorno=0;
-
     printf(mensaje);
-    scanf("%s", ingreso);
-    auxPrecio=atof(ingreso);//atof, recibe una palabra y te la devuelve como doble, si no te devuelve 0.
-
-    if(auxPrecio>0)
+    scanf("%s",ingreso);
+    if( strlen(ingreso)==6)
     {
-        *resultado=auxPrecio;
+        strcpy(codigo,ingreso);
         retorno=1;
     }
     return retorno;
- }
 
- int getCodigo(char *mensaje, char *codigo)
-    // tiene que tener 6 de largo el codigo.
+}
+int getPrecio(char *mensaje,float *elPrecio)
 {
     char ingreso[50];
     float auxPrecio;
     int retorno=0;
     printf(mensaje);
-    scanf("%s", ingreso);
-    strlen(ingreso);
-
-    auxPrecio=atof(ingreso);//atof, recibe una palabra y te la devuelve como doble, si no te devuelve 0.
-
-    if(strlen(ingreso)==7)
+    scanf("%s",ingreso);
+    auxPrecio=atof(ingreso);
+    if(auxPrecio>0)
     {
-        retorno=1;
+      *elPrecio  = auxPrecio;
+      retorno= 1;
     }
     return retorno;
+
 }
